@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="header">
+    <span class="greeting" *ngIf="user"> Hi {{ user ? user.name : 'Guest' }} </span>
+    <button mat-button class="logout-btn" *ngIf="user" (click)="onLogout()">Logout</button>
+  </div>
+  <h2 class="app-title">My To Do App.</h2>
+  <div class="content">
+    <router-outlet></router-outlet>  
+  </div>
+</div>
+
+

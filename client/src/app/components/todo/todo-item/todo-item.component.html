@@ -1,0 +1,12 @@
+<mat-card class="todo-item-card">
+    <h3><strong>{{ todo.title }}</strong></h3>
+    <div class="todo-item-bottom-row">
+      <p>{{ todo.description }}</p> 
+      <div class="todo-item-actions">
+        <mat-icon (click)="markAsDone()">check_circle</mat-icon>
+        <mat-icon (click)="edit()">edit</mat-icon>
+        <mat-icon (click)="delete()">delete</mat-icon>
+      </div>
+    </div>
+  </mat-card>
+  

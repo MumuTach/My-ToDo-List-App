@@ -1,0 +1,30 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title>Update Item</h2>
+  <span></span>
+  <div mat-dialog-content class="dialog-content">
+    <form [formGroup]="todoEditForm" (ngSubmit)="updateTodo()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" placeholder="Titre">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" placeholder="Description"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option [value]="false">To Do</mat-option>
+          <mat-option [value]="true">Done</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="button-group">
+        <button mat-button (click)="closeDialog()">Cancel</button>
+        <button mat-button type="submit" color="primary">Update</button>
+      </div>
+    </form>
+  </div>
+</div>

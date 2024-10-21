@@ -1,0 +1,30 @@
+<mat-card class="todo-card">
+    <form class="form" [formGroup]="todoForm" (ngSubmit)="addToDo()">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Title of your to do?</mat-label>
+        <input matInput formControlName="title" placeholder="title">
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Description of your to do?</mat-label>
+        <input matInput formControlName="description" placeholder="description">
+      </mat-form-field> 
+      <button mat-button class="login-btn" type="submit">Add</button>
+    </form>
+
+    <div class="filter-buttons">
+        <button mat-button (click)="filterTodos(false)" 
+          [ngClass]="{'selected': filter === false}">
+          To Do
+        </button>
+        <button mat-button (click)="filterTodos(true)" 
+          [ngClass]="{'selected': filter === true}">
+          Done
+        </button>
+      </div>
+  </mat-card>
+  <div class="todo-items-container">
+    <div *ngFor="let todo of filteredTodos">
+      <app-todo-item [todo]="todo">
+      </app-todo-item>
+    </div>
+  </div>

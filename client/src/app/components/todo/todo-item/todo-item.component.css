@@ -1,0 +1,68 @@
+.todo-item-card {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    color: black
+  }
+
+  .todo-item-content h3 {
+    font-weight: 4px;
+  }
+
+  .todo-item-bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+  }
+  
+  .todo-item-bottom-row p {
+    color: grey;
+    flex-grow: 1; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    word-break: break-word;
+    white-space: normal;
+  }
+  
+  .todo-item-actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .mat-icon {
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.mat-icon:hover {
+  transform: scale(1.2);
+}
+
+@media only screen and (max-width: 600px) {
+  .todo-item-card {
+    flex-direction: column;
+    padding: 20px;
+    max-width: 350px;
+  }
+
+  .todo-item-actions {
+    gap: 2px;
+  }
+
+  .todo-item-bottom-row p {
+    font-size: 14px; 
+  }
+
+  .mat-icon {
+    font-size: 18px; 
+  }
+
+  .todo-item-actions {
+      gap: 5px; 
+  }
+}
+
+  
