@@ -10,7 +10,7 @@ on:
 
 jobs:
   backend-test: 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: backend
@@ -41,10 +41,7 @@ jobs:
           distribution: 'adoptopenjdk'
 
       - name: Set up Maven
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17.0.1'
-          maven-version: '3.9.9'
+        run: mvn -version
 
       - name: Configure MySQL Connection
         run: |
@@ -52,15 +49,15 @@ jobs:
           echo "spring.datasource.username=root" >> src/main/resources/application.properties
           echo "spring.datasource.password=${{ secrets.MYSQL_PASSWORD }}" >> src/main/resources/application.properties
 
-      - name: Build Backend
-        run: mvn clean install
+      - name: Build & test Backend
+        run: mvn clean package test
         working-directory: ./com.inn.backend
 
       - name: Start Backend
-        run: java -jar backend/target/*.jar &
+        run: java -jar com.inn.backend/target/*.jar &
 
   frontend-test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -78,5 +75,5 @@ jobs:
 
       - name: Start Frontend
         run: |
-          cd frontend
+          cd client
           npx http-server dist/frontend -p 4200 &
