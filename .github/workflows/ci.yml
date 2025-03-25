@@ -45,9 +45,9 @@ jobs:
 
       - name: Configure MySQL Connection
         run: |
-          echo "spring.datasource.url=jdbc:mysql://127.0.0.1:3306/backend" > src/main/resources/application.properties
-          echo "spring.datasource.username=root" >> src/main/resources/application.properties
-          echo "spring.datasource.password=${{ secrets.MYSQL_PASSWORD }}" >> src/main/resources/application.properties
+          echo "spring.datasource.url=jdbc:mysql://127.0.0.1:3306/backend" > com.inn.backend/com.inn.backend/src/main/resources/application.properties
+          echo "spring.datasource.username=root" >> com.inn.backend/com.inn.backend/src/main/resources/application.properties
+          echo "spring.datasource.password=${{ secrets.MYSQL_PASSWORD }}" >> com.inn.backend/com.inn.backend/src/main/resources/application.properties
 
       - name: Build & test Backend
         run: mvn clean package test
