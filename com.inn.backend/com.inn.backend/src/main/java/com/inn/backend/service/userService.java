@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface userService {
     user getUserByEmail(String email);
-    user getUserBId(int id);
+    user getUserById(int id);
     user registerUser(user user);
 }

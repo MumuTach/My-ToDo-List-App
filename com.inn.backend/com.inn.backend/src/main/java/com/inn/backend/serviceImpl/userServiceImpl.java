@@ -28,7 +28,7 @@ public class userServiceImpl implements userService {
     }
 
     @Override
-    public user getUserBId(int id) { return iUser.findUserById(id);}
+    public user getUserById(int id) { return iUser.findUserById(id);}
 
     @Override
     public user registerUser(user user) {

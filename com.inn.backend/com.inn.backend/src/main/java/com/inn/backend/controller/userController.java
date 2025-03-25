@@ -10,12 +10,15 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
+@Tag(name = "USER API", description = "Gérer les utilisateurs")
 public class userController {
 
     @Autowired
@@ -25,16 +28,19 @@ public class userController {
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/email/{email}")
+    @Operation(summary = "Récupère l'utilisateur associé à un email")
     public ResponseEntity<user> getUserByEmail(@PathVariable String email) {
         return ResponseEntity.ok().body(UserService.getUserByEmail(email));
     }
 
     @GetMapping("/id/{id}")
+    @Operation(summary = "Récupère l'utilisateur associé à un id")
     public ResponseEntity<user> getUserById(@PathVariable Integer id) {
-        return ResponseEntity.ok().body(UserService.getUserBId(id));
+        return ResponseEntity.ok().body(UserService.getUserById(id));
     }
 
     @PostMapping("/login")
+    @Operation(summary = "Gère la connexion à l'application")
     public ResponseEntity<Map<String, Object>> login(@RequestBody Map<String, String> loginData) {
         user foundUser = UserService.getUserByEmail(loginData.get("email"));
         if(foundUser != null && passwordEncoder.matches(loginData.get("password"), foundUser.getPassword())) {
@@ -48,6 +54,7 @@ public class userController {
     }
 
     @PostMapping("/signUp")
+    @Operation(summary = "Gère la création de compte utilisateur")
     public ResponseEntity<Map<String, Object>> signUp(@RequestBody user user) {
         Map<String, Object> response = new HashMap<>();
 
@@ -65,6 +72,7 @@ public class userController {
     }
 
     @PostMapping("/logout")
+    @Operation(summary = "Gère la déconnexion")
     public ResponseEntity<String> logout(HttpServletRequest request, HttpServletResponse response) {
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON) 
