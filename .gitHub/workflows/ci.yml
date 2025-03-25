@@ -1,0 +1,60 @@
+name : integration continue
+
+on:
+  push:
+    branches: 
+    - main
+  pull_request:
+    branches:
+    - main 
+
+jobs:
+  backend-test: 
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'adoptopenjdk'
+
+      - name: Set up Maven
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17.0.1'
+          maven-version: '3.9.9'
+
+      - name: Build Backend
+        run: mvn clean package -DskipTests
+        working-directory: ./com.inn.backend
+
+      - name: Start Backend
+        run: java -jar backend/target/*.jar &
+
+  frontend-test:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.14.0'
+
+      - name: Install & Build Frontend
+        run: |
+          npm install
+          npm run build
+        working-directory: ./client
+
+      - name: Start Frontend
+        run: |
+          cd frontend
+          npx http-server dist/frontend -p 4200 &
