@@ -18,6 +18,8 @@ MyToDoListApp is an intuitive web application designed to help users easily mana
 - **Lombok** 🚀
 - **Java EE** 🚀
 - **MySQL 8** 🚀
+- **CI/CD with github actions** 🚀
+- **Sonarqube** 🚀
 
 ## Key Features
 - **Add Tasks: Users can create new tasks with a title, description, and status (to-do, in-progress, done).**
