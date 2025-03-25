@@ -86,19 +86,4 @@ public class todoServiceTest {
         assertNotNull(todos);
         assertEquals(2, todos.size());
     }
-
-    @Test
-    void testFindByUserIdAndStatus() {
-        when(todoRepo.findByUserIdAndStatus(testData.Existing_User.getId(), false))
-                .thenReturn(List.of(testData.todos.get(0)));
-
-        List<todo> todos = underTest.findByUserIdAndStatus(testData.Existing_User.getId(), false);
-
-        System.out.println("Statut de la tâche récupérée: " + todos.get(0).isStatus());
-        System.out.println("Statut dans testData: " + testData.todos.get(0).isStatus());
-        System.out.println("Mock retourne: " + todoRepo.findByUserIdAndStatus(testData.Existing_User.getId(), false));
-        assertNotNull(todos);
-        assertEquals(1, todos.size());
-        assertFalse(todos.get(0).isStatus());
-    }
 }

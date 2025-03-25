@@ -31,12 +31,6 @@ public class todoController {
         return toDoService.findByUserId(userId);
     }
 
-    @GetMapping("/{userId}/{status}")
-    @Operation(summary = "Récupère la liste des todo d'un utilisateur par status")
-    public List<todo> getTodosByUserAndStatus(@PathVariable Integer userId, @PathVariable Boolean status) {
-        return toDoService.findByUserIdAndStatus(userId, status);
-    }
-
     @PostMapping("add/{userId}")
     @Operation(summary = "Ajoute un todo pour un utilisateur donné")
     public ResponseEntity<todo> addToDo(@PathVariable Integer userId, @RequestBody todoForm todoForm) {

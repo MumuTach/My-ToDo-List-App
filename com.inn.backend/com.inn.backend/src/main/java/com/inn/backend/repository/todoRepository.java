@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 public interface todoRepository extends JpaRepository<todo,Integer> {
     List<todo> findTodoByUserId(Integer userId);
-    List<todo> findByUserIdAndStatus(Integer userId, Boolean status);
 }
