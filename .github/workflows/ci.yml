@@ -51,7 +51,7 @@ jobs:
 
       - name: Build & test Backend
         run: mvn clean package test
-        working-directory: ./com.inn.backend
+        working-directory: ./com.inn.backend/com.inn.backend
 
       - name: Start Backend
         run: java -jar com.inn.backend/target/*.jar &
