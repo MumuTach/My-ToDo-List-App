@@ -11,5 +11,4 @@ public interface todoService {
     todo updateToDo(Integer id, todoForm todo);
     void deleteToDo(Integer id);
     List<todo> findByUserId(Integer userId);
-    List<todo> findByUserIdAndStatus(Integer userId, Boolean status);
 }

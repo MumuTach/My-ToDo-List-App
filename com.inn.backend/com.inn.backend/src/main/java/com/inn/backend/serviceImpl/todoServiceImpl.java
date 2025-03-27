@@ -55,9 +55,4 @@ public class todoServiceImpl implements todoService {
     public List<todo> findByUserId(Integer userId) {
         return todoRepo.findTodoByUserId(userId);
     }
-
-    @Override
-    public List<todo> findByUserIdAndStatus(Integer userId, Boolean status) {
-        return todoRepo.findByUserIdAndStatus(userId, status);
-    }
 }

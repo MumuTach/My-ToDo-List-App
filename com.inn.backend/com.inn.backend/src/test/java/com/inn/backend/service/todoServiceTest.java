@@ -86,16 +86,4 @@ public class todoServiceTest {
         assertNotNull(todos);
         assertEquals(2, todos.size());
     }
-
-    @Test
-    void testFindByUserIdAndStatus() {
-        when(todoRepo.findByUserIdAndStatus(testData.Existing_User.getId(), false))
-                .thenReturn(List.of(testData.todos.get(0)));
-
-        List<todo> todos = underTest.findByUserIdAndStatus(testData.Existing_User.getId(), false);
-
-        assertNotNull(todos);
-        assertEquals(1, todos.size());
-        assertFalse(todos.get(0).isStatus());
-    }
 }
