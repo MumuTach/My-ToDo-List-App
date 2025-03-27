@@ -26,7 +26,7 @@ public class todoController {
     private userService userService;
 
     @GetMapping("/{userId}")
-    @Operation(summary = "Récupère l'utilisateur pour une liste de todo")
+    @Operation(summary = "Récupère la liste des todos pour un utilisateur dont l'id est userId")
     public List<todo> getTodosByUser(@PathVariable Integer userId) {
         return toDoService.findByUserId(userId);
     }
